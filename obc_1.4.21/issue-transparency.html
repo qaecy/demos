@@ -41,8 +41,6 @@
     <qaecy-tile-streamer id="viewer"></qaecy-tile-streamer>
     <script type="module">
 
-      import {duplex} from './src/defs/duplex';
-
       const viewer = document.getElementById("viewer");
       const loadTransparent = document.getElementById("load-t");
       const load = document.getElementById("load");
@@ -52,6 +50,8 @@
 
       async function loadModel(makeTransparent = false){
         await viewer.unloadAll();
+        const res = await fetch("/duplex.json");
+        const duplex = await res.json();
         if(makeTransparent) makeAllTransparent(duplex);
         await viewer.loadStream(duplex);
       }

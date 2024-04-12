@@ -98,8 +98,6 @@ export class StreamViewerElement extends LitElement {
       const group = fragments.groups[i];
       await this._loader?.remove(group.uuid);
       const modelUUID = this._modelUUIDs[i];
-      
-      console.log(modelUUID);
       this._modelUUIDs.splice(parseInt(i), 1);
       delete this._idMap[modelUUID];
     };
