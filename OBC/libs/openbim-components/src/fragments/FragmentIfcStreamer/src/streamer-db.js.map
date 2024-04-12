@@ -1,0 +1,1 @@
+{"version":3,"file":"streamer-db.js","sourceRoot":"","sources":["../../../../../src/fragments/FragmentIfcStreamer/src/streamer-db.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAO1B,MAAM,OAAO,kBAAmB,SAAQ,KAAK;IAK3C;QACE,KAAK,CAAC,eAAe,CAAC,CAAC;QACvB,IAAI,CAAC,OAAO,CAAC,CAAC,CAAC,CAAC,MAAM,CAAC;YACrB,KAAK,EAAE,UAAU;SAClB,CAAC,CAAC;IACL,CAAC;CACF"}
