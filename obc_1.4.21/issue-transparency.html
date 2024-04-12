@@ -41,6 +41,8 @@
     <qaecy-tile-streamer id="viewer"></qaecy-tile-streamer>
     <script type="module">
 
+      import {duplex} from './src/defs/duplex';
+
       const viewer = document.getElementById("viewer");
       const loadTransparent = document.getElementById("load-t");
       const load = document.getElementById("load");
@@ -50,12 +52,8 @@
 
       async function loadModel(makeTransparent = false){
         await viewer.unloadAll();
-        const geometryDataRaw = await fetch(`duplex.json`);
-        const geometryData = await geometryDataRaw.json();
-
-        if(makeTransparent) makeAllTransparent(geometryData);
-
-        await viewer.loadStream(geometryData);
+        if(makeTransparent) makeAllTransparent(duplex);
+        await viewer.loadStream(duplex);
       }
 
       function initEventListeners(){
@@ -74,7 +72,7 @@
       function makeAllTransparent(geometryData){
         geometryData.assets = geometryData.assets.map(item => {
           item.geometries = item.geometries.map(g => {
-            g.color[3] = 0.01;
+            g.color[3] = 0.001;
             return g;
           });
           return item;
