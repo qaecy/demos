@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highlight color</title>
+    <script type="module" src="./src/main.ts"></script>
+
+    <style>
+      body{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      qaecy-tile-streamer{
+        width: 80vw;
+        height: 80vh;
+      }
+    </style>
+  </head>
+  <body>
+    <qaecy-tile-streamer id="viewer"></qaecy-tile-streamer>
+    <script type="module">
+
+      import duplex from '/src/defs/duplex';
+      console.log(duplex)
+
+      const viewer = document.getElementById("viewer");
+      const loadTransparent = document.getElementById("load-t");
+      const load = document.getElementById("load");
+
+      viewer.setAttribute("bucketURL", `https://qaecy.github.io/sample-models/duplex/`);
+      initEventListeners();
+      loadModel();
+
+      async function loadModel(){
+        await viewer.unloadAll();
+        const copy = JSON.parse(JSON.stringify(duplex)); // Make a copy of the definition (so transparency not overriding)
+        await viewer.loadStream(copy);
+      }
+
+      function initEventListeners(){
+        viewer.addEventListener('selection-change', (event) => {
+          console.log('Selection changed:', event.detail);
+        });
+        viewer.addEventListener('hovered-element', (event) => {
+          console.log('Hover changed:', event.detail);
+        });
+      }
+
+    </script>
+  </body>
+</html>

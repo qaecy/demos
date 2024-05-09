@@ -1,0 +1,23 @@
+{
+  "name": "obc-issues",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lit": "^3.1.2",
+    "openbim-components": "1.5.0",
+    "three": "0.160.1",
+    "tseep": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/jsonld": "^1.5.13",
+    "@types/three": "^0.162.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.6"
+  }
+}

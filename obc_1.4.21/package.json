@@ -11,7 +11,8 @@
   "dependencies": {
     "lit": "^3.1.2",
     "openbim-components": "1.4.21",
-    "three": "0.160.1"
+    "three": "0.160.1",
+    "tseep": "^1.2.1"
   },
   "devDependencies": {
     "@types/jsonld": "^1.5.13",

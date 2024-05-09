@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duplex</title>
+
+    <!-- Make QAECY OBC globally available -->
+    <script
+      type="module"
+      src="https://unpkg.com/qaecy-obc-1.5.0@0.0.0/main.js"
+    ></script>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+      #viewer{
+        width: 400px;
+        height: 400px;
+        background-color: #f0f0f0; /* Example background color */
+        border: 1px solid black;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- The QAECY viewer -->
+    <qaecy-obc
+      id="viewer"
+      bucketURL="https://qaecy.github.io/sample-models/duplex-1.5.0/"
+    ></qaecy-obc>
+
+    <!-- Loading model + changing settings -->
+    <script type="module">
+      const viewer = document.getElementById("viewer");
+
+      // Change settings
+      const settings = viewer.settings;
+      settings.uiSettings.showUI = false; // Hide user interface
+      viewer.setAttribute("settings", settings);
+
+      loadModel();
+
+      async function loadModel() {
+        const geometryDataRaw = await fetch(`./assets/duplex.json`);
+        const geometryData = await geometryDataRaw.json();
+        await viewer.loadStream(geometryData);
+      }
+    </script>
+
+  </body>
+</html>
