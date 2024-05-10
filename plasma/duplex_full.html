@@ -8,7 +8,7 @@
     <!-- Make QAECY OBC globally available -->
     <script
       type="module"
-      src="https://unpkg.com/qaecy-obc-1.5.0@0.0.2/main.js"
+      src="./assets/bim-viewer.js"
     ></script>
 
     <style>
@@ -36,7 +36,7 @@
       // Change settings
       const settings = viewer.settings;
       settings.uiSettings.showUI = false; // Hide user interface
-      viewer.setAttribute("settings", settings);
+      viewer.updateSettings(settings);
 
       loadModel();
 
