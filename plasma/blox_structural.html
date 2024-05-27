@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLOX Structural Model</title>
+
+    <!-- Make QAECY OBC globally available -->
+    <script
+      type="module"
+      src="./assets/bim-viewer.js"
+    ></script>
+
+    <style>
+      #viewer{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- The QAECY viewer -->
+    <qaecy-obc
+      id="viewer"
+      bucketURL="https://qaecy.github.io/sample-models/blox-1.5.0/"
+    ></qaecy-obc>
+
+    <!-- Loading model + changing settings -->
+    <script type="module">
+      const viewer = document.getElementById("viewer");
+
+      // Change settings
+      const settings = viewer.settings;
+      settings.uiSettings.showUI = false; // Hide user interface
+      viewer.updateSettings(settings);
+
+      loadModel();
+
+      async function loadModel() {
+        const geometryDataRaw = await fetch(`./assets/blox_str.json`);
+        const geometryData = await geometryDataRaw.json();
+        await viewer.loadStream(geometryData);
+      }
+    </script>
+
+  </body>
+</html>
